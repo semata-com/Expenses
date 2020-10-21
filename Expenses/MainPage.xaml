@@ -1,0 +1,110 @@
+﻿<Page
+    x:Class="Expenses.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Expenses"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="Page_Loaded" Width="868.28">
+    <Page.Resources>
+        <local:DateToStringConverter x:Key="DateToStringConverter"/>
+    </Page.Resources>
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock FontSize="22" HorizontalTextAlignment="Center">
+                        Activities
+                    </TextBlock>
+                    <controls:DataGrid x:Name="ActivityDataGrid" 
+                                       BorderBrush="Black"
+                                       BorderThickness="1"
+                           Height="300"
+                           Margin="12"
+                           AutoGenerateColumns="False"
+                           RowDetailsVisibilityMode="Visible"
+                           GridLinesVisibility="All"
+                           Loaded="ActivityDataGrid_Loaded"
+                           SelectionChanged="ActivityDataGrid_SelectionChanged"
+                           BeginningEdit="ActivityDataGrid_BeginningEdit"
+                           RowEditEnded="ActivityDataGrid_RowEditEnded"
+                           ItemsSource="{Binding  EditableActivityItems}">
+                        <controls:DataGrid.Columns>
+                            <controls:DataGridTextColumn Header="From" 
+                                             Width="110"
+                                             IsReadOnly="False"
+                                             Binding="{Binding From, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DateToStringConverter}}" />
+                            <controls:DataGridTextColumn Header="To" 
+                                             Width="110"
+                                             IsReadOnly="False"
+                                             Binding="{Binding To, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DateToStringConverter}}" />
+                            <controls:DataGridTextColumn Header="Description" 
+                                             Width="440"
+                                             IsReadOnly="False"
+                                             Binding="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        </controls:DataGrid.Columns>
+                    </controls:DataGrid>
+                </StackPanel>
+                <StackPanel>
+                    <Button Width="100"
+                            Margin="10,80,10,10"
+                            Name="AddActivityButton"
+                            Click="AddActivityButton_Click" >Add</Button>
+                    <Button Width="100"
+                            Margin="10,10,10,10"
+                            Name="DeleteActivityButton"
+                            Click="DeleteActivityButton_Click" >Delete</Button>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        DataContext="{Binding ElementName=ActivityDataGrid, Path=SelectedItem}">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock FontSize="22" HorizontalTextAlignment="Center">
+                        Expenses
+                    </TextBlock>
+                    <controls:DataGrid Name="ExpenseDataGrid"
+                                       BorderBrush="Black"
+                                       BorderThickness="1"
+                                   Height="300"
+                                   Margin="12"
+                                   AutoGenerateColumns="False"
+                                   RowDetailsVisibilityMode="Visible"
+                                   GridLinesVisibility="All"
+                                   Loaded="ExpenseDataGrid_Loaded"
+                                   SelectionChanged="ExpenseDataGrid_SelectionChanged"
+                                   BeginningEdit="ExpenseDataGrid_BeginningEdit"
+                                   RowEditEnded="ExpenseDataGrid_RowEditEnded"
+                                   ItemsSource="{Binding ExpensesIncurred}">
+                        <controls:DataGrid.Columns>
+                            <controls:DataGridTextColumn Header="Date" 
+                                             Width="110"
+                                             IsReadOnly="False"
+                                             Binding="{Binding Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DateToStringConverter}}" />
+                            <controls:DataGridTextColumn Header="Description" 
+                                             Width="440"
+                                             IsReadOnly="False"
+                                             Binding="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <controls:DataGridTextColumn Header="Amount" 
+                                             Width="110"
+                                             IsReadOnly="False"
+                                             Binding="{Binding Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        </controls:DataGrid.Columns>
+                    </controls:DataGrid>
+                </StackPanel>
+                <StackPanel>
+                    <Button Width="100"
+                            Margin="10,80,10,10"
+                            Name="AddExpenseButton"
+                            Click="AddExpenseButton_Click" >Add</Button>
+                    <Button Width="100"
+                            Margin="10,10,10,10"
+                            Name="DeleteExpenseButton"
+                            Click="DeleteExpenseButton_Click" >Delete</Button>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

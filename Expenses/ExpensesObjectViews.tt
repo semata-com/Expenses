@@ -1,0 +1,4 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ DataStoreCodeGenerator Processor="Semata.CodeGeneratorDirectiveProcessor" #>
+<# GenerateObjectModelViews("Expenses.ds", "Expenses", "Expenses"); #>
