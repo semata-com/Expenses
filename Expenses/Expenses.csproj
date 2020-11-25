@@ -149,18 +149,15 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.1.9</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls.DataGrid">
+      <Version>6.1.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Toolkit.Uwp.UI.Controls.DataGrid, Version=6.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\Andre\source\repos\WindowsCommunityToolkit-master\Microsoft.Toolkit.Uwp.SampleApp\bin\x86\Debug\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <SDKReference Include="Semata.DataStore, Version=1.0.175.354">
+    <SDKReference Include="Semata.DataStore, Version=1.0.180.365">
       <Name>Semata DataStore</Name>
     </SDKReference>
   </ItemGroup>

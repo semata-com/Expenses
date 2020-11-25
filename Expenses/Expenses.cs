@@ -41,6 +41,7 @@ namespace Expenses
     {
 
         LazyValue<ItemObjectViewList<Expense, ExpenseView>> expensesIncurred_;
+
         partial void OnInitialize()
         {
             expensesIncurred_ =
@@ -59,60 +60,6 @@ namespace Expenses
 
         public ItemObjectViewList<Expense, ExpenseView> ExpensesIncurred => expensesIncurred_.Value;
 
-        // Work around to prevent initialize validation on BeginEdit - only a problem with new Items
-        //                         vvvv
-
-        bool firstValidate_ = false;
-        public override void BeginEdit()
-        {
-            base.BeginEdit();
-            firstValidate_ = true;
-        }
-
-        public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            if (!firstValidate_)
-            {
-                return base.Validate(validationContext);
-            }
-            else
-            {
-                firstValidate_ = false;
-                return Enumerable.Empty<ValidationResult>();
-            }
-        }
-
-        //                         ^^^^
-
     }
 
-    public partial class ExpenseView
-    {
-
-        // Work around to prevent initialize validation on BeginEdit - only a problem with new Items
-        //                         vvvv
-
-        bool firstValidate_ = false;
-        public override void BeginEdit()
-        {
-            base.BeginEdit();
-            firstValidate_ = true;
-        }
-
-        public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            if (!firstValidate_)
-            {
-                return base.Validate(validationContext);
-            }
-            else
-            {
-                firstValidate_ = false;
-                return Enumerable.Empty<ValidationResult>();
-            }
-        }
-
-        //                         ^^^^
-
-    }
 }
