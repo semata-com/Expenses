@@ -164,7 +164,7 @@
     <SDKReference Include="Microsoft.VCLibs, Version=14.0">
       <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
     </SDKReference>
-    <SDKReference Include="Semata.DataStore, Version=1.0.190.376">
+    <SDKReference Include="Semata.DataStore, Version=1.0.191.388">
       <Name>Semata DataStore</Name>
     </SDKReference>
   </ItemGroup>
