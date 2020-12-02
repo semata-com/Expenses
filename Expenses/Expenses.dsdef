@@ -1,0 +1,69 @@
+Add ItemType Activity;
+Add ItemType Expense;
+Add AttributeType Activity.Description String
+{
+    "semata.datastore.objectmodel" : 
+    [
+        "mandatory"
+    ]
+}
+;
+Add AttributeType Activity.From Date
+{
+    "semata.datastore.objectmodel" : 
+    [
+        "mandatory"
+    ]
+}
+;
+Add AttributeType Activity.To Date
+{
+    "semata.datastore.objectmodel" : 
+    [
+        "mandatory"
+    ]
+}
+;
+
+Add AttributeType Expense.Amount Decimal
+{
+    "semata.datastore.objectmodel" : 
+    [
+        "mandatory"
+    ]
+}
+;
+Add AttributeType Expense.Date Date
+{
+    "semata.datastore.objectmodel" : 
+    [
+        "mandatory"
+    ]
+}
+;
+Add AttributeType Expense.Description String
+{
+    "semata.datastore.objectmodel" : 
+    [
+        "mandatory"
+    ]
+}
+;
+
+Add AssociationType Activity.Incurred
+{
+    "semata.datastore.objectmodel" : 
+    [
+        "associates_prevent_delete"
+    ]
+}
+to Expense.IncurredOn
+{
+    "semata.datastore.objectmodel" : 
+    [
+        "property",
+        "mandatory"
+    ]
+}
+;
+
